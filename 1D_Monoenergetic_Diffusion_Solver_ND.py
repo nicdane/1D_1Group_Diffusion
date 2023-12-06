@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 # Constants
 D = 1.0        # Diffusion coefficient
 SIGMA_A = 0.6  # Absorption cross section for left material
-SIGMA_F = 0.6  # Fission cross section
+SIGMA_F = 0.1  # Fission cross section
 SIGMA_B = 1.5  # Absorption cross section for the right material
 material_boundary = 5  # Index where the material changes
 NU = 2.50      # Average number of neutrons produced per fission
@@ -72,7 +72,7 @@ def gauss_seidel_eigenvalue(A, F, tol=1e-4, max_iter=100):
 
     return 1/lambda_new, phi
 
-# Using inverted matrix method to quickly see flux vals
+# Using inverted matrix method to quickly see flux vals This DOES NOT use Gauss-Seidel method
 #NB: Some plots resulting from this subroutine were used during presentation. Kept subroutine still intact as it's still 'most' accurate
 def eigenvalue_test(A, F):
 
@@ -101,14 +101,19 @@ def plot_flux_distributions(eigenvectors, N):
 
     x = range(N)  # Discretization points
 
-    for i in range(eigenvectors.shape[1]):
-        "toggle all eigenvectors or just one by commenting out one or the other below"
-        #plt.plot(x, eigenvectors[:, i], label=f'Eigenvalue {i+1}')
-        plt.plot(x, eigenvectors[:, 0]) #Here I'm just plotting the first one -- distribution likely faulty
+    x_positive = np.linspace(0, N-1, N)  # Original discretization points
+    x_negative = -np.flip(x_positive) - 0.5  # Mirrored discretization points
+    x_full = np.concatenate((x_negative, x_positive))
 
-    plt.xlabel('Discretization Points')
-    plt.ylabel('Neutron Flux')
-    plt.title('Neutron Flux Distributions')
+    #loop is redundant now...modified so it wouldnt overplot several eigenvalues at once, index 0 is only one that matters
+    for i in range(eigenvectors.shape[1]):
+        flux_full = np.concatenate((np.flip(eigenvectors[:, 0]), eigenvectors[:, 0]))
+
+        plt.plot(x_full, flux_full) #plots what you first see when running code -- supposed to emulate flux distribution w/ reflecting boundary
+
+    plt.xlabel('Discretization Points of System')
+    plt.ylabel('Neutron Flux - Relative')
+    plt.title('Neutron Flux Distribution')
     plt.legend()
     plt.show()
 
@@ -182,6 +187,12 @@ plot_matrix_heatmap(A, title='Heatmap of Matrix A')
 # Main execution using Power Method
 A = create_matrix_A(N, D, SIGMA_A, SIGMA_B, material_boundary, h)
 F = create_matrix_F(N, SIGMA_F, NU)
+
+k, flux = power_method(A, F)
+
+print(f"Converged eigenvalue (1/k): {k}")
+print(f"Flux distribution: {flux}")
+plt.plot(flux)"""
 
 k, flux = power_method(A, F)
 
