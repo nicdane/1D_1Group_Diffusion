@@ -137,10 +137,6 @@ print(F)
 plot_flux_distributions(eigenvectors, N)
 print('\n \n')
 
-# Main execution
-A = create_matrix_A(N, D, SIGMA_A, SIGMA_B, material_boundary, h)
-F = create_matrix_F(N, SIGMA_F, NU)
-
 k, flux = gauss_seidel_eigenvalue(A, F)
 
 print(f"Converged eigenvalue (1/k): {k}")
