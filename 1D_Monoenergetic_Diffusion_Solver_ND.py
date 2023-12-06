@@ -43,7 +43,7 @@ def create_matrix_F(N, SIGMA_F, NU):
     F = np.diag(np.full(N, NU * SIGMA_F))
     return F
 
-#iterative solver to converge flux + k values
+#iterative solver to converge flux + k values -- modified from HW2 to fit within context of problem -- still a bit broken, will take some time to update
 #returns 1/k to be converted
 def gauss_seidel_eigenvalue(A, F, tol=1e-4, max_iter=100):
     # Initial guess for the flux vector phi and eigenvalue lambda (1/k)
