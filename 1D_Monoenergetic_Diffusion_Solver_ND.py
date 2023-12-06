@@ -188,7 +188,7 @@ k, flux = power_method(A, F)
 
 print(f"Converged eigenvalue (1/k): {k}")
 print(f"Flux distribution: {flux}")
-plt.plot(flux)"""
+plt.plot(flux)
 
 k, flux = power_method(A, F)
 
