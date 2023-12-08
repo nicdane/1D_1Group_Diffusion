@@ -18,7 +18,18 @@ Material boundary describes where on the 1D x-axis the material changes. Functio
 L and N are important for this code. L represents the total length of cells with aribitrary units...again for computational ease. N describes the discretization of your system or in easier terms--your resolution. Feel free to bump it up to higher values but the system may break.
 
 There is finally an 'h' term. DO NOT change this. It's a simple tool that calculates mesh spacing for the matrix creation function. 
+# EXAMPLES
 
+![Reflector Region](https://github.com/nicdane/1D_1Group_Diffusion/assets/93825546/a896ad59-6b96-4032-85da-00e9709824c6)
+
+![matrix_heatmap_1](https://github.com/nicdane/1D_1Group_Diffusion/assets/93825546/ac245371-9ad4-42e8-881b-bae07bf73252)
+
+![primary_eigenvalue__example](https://github.com/nicdane/1D_1Group_Diffusion/assets/93825546/6fe8b721-5b8e-479a-a448-9166f02026f8)
+
+![no source](https://github.com/nicdane/1D_1Group_Diffusion/assets/93825546/33930774-6366-48ea-bd97-b53b97034fe3)
+
+
+![011](https://github.com/nicdane/1D_1Group_Diffusion/assets/93825546/7f245a8a-31e9-41dd-af77-817d36917832)
 
 # SubModules And Their Function
 
