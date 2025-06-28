@@ -140,4 +140,5 @@ print(f"Flux distribution:\n{flux}")
 
 plot_symmetric_flux(flux, N)
 
-
+# Show matrix structure of A
+plot_matrix_heatmap(A, title='Heatmap of Matrix A')
