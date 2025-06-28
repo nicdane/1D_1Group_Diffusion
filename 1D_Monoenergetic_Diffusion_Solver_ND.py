@@ -138,7 +138,7 @@ k_inv, flux = gauss_seidel_eigenvalue(A, F)
 print(f"\nConverged eigenvalue (1/k): {k_inv:.4f}")
 print(f"Flux distribution:\n{flux}")
 
-plot_symmetric_flux(flux, N)
+plot_flux_with_material_regions(flux, N, material_boundary, SIGMA_A, SIGMA_B)
 
 # Show matrix structure of A
 plot_matrix_heatmap(A, title='Heatmap of Matrix A')
